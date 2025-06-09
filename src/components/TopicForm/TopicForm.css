@@ -15,16 +15,48 @@ form > main {
     font-size: 1rem;
 }
 
+main > input {
+    min-width: 350px;
+}
+
 input,button {
     font-family: inherit;
     font-size: inherit;
+    border-radius: 5px;
 }
 
-button{
+li > button {
+    padding: 2px 5px;
+    border-radius: 5px;
+    margin-left: 3px;
+    border: none;
+    background: none;
+
+}
+
+li>button:hover {
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+main > button{
+    padding: 10px;
     background-color: #333446;
     color: #EAEFEF;
     border: none;
     border-radius: 2px;
-    
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 
+form > ul {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+li {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    list-style: none;
+}

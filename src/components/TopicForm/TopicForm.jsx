@@ -6,13 +6,13 @@ function TopicForm() {
         event.preventDefault();
         console.log("Submitted");
     }
-    const topicList = topics.map(topic => <li>{topic}</li>);
+    const topicList = topics.map(topic => <li>{topic}<button type="button" aria-label='remove topic'>x</button></li>);
     return (
-        <form >
+        <form onSubmit={handleSubmit} >
             <p>Add topics to generate a quiz below</p>
             <main>
                 <input type="text" name="topic" placeholder="e.g React hooks" />
-                <button type="submit" onSubmit={handleSubmit}>+ Add topic</button>
+                <button type="submit" >+ Add topic</button>
             </main>
             {topics.length !==0 && <ul>{topicList}</ul> }
         </form>
