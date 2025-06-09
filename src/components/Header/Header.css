@@ -1,0 +1,14 @@
+header {
+    background-color: #333446;
+    color: #EAEFEF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+header > img {
+    width: 70px;
+}
