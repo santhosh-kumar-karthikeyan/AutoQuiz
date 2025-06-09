@@ -1,12 +1,16 @@
 header {
-    background-color: #333446;
-    color: #EAEFEF;
+    background-color: #EAEFEF;
+    color: #333446;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    font-family: "Zilla Slab", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 header > img {

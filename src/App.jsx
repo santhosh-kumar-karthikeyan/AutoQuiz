@@ -1,8 +1,12 @@
 import Header from "./components/Header/Header";
+import TopicForm from "./components/TopicForm/TopicForm";
 
 function App() {
   return (
-    <Header/>
+    <>
+      <Header/>
+      <TopicForm/>
+    </>
   )
 }
 

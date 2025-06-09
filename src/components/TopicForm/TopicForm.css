@@ -1,0 +1,30 @@
+form {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+form > main {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    font-family: Inter, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1rem;
+}
+
+input,button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+button{
+    background-color: #333446;
+    color: #EAEFEF;
+    border: none;
+    border-radius: 2px;
+    
+}
+
