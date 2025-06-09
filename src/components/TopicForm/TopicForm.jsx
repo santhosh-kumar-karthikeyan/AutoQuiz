@@ -1,12 +1,22 @@
 import './TopicForm.css';
+import { useState } from 'react';
 
 function TopicForm() {
-    let topics = ["Web dev", "React"];
+    const [topics, setTopics] = useState([]);
     function handleSubmit(event) {
         event.preventDefault();
-        console.log("Submitted");
+        const formData = new FormData(event.target);
+        const newTopic = formData.get("topic");
+        if(topics.find(topic => topic == newTopic))
+            return;
+        console.log(topics);
+        setTopics([...topics,newTopic]);
+        event.target.reset();
     }
-    const topicList = topics.map(topic => <li>{topic}<button type="button" aria-label='remove topic'>x</button></li>);
+    function removeTopic(topic) {
+        setTopics(topics.filter(currTopic => currTopic !== topic));
+    }
+    const topicList = topics.map(topic => <li>{topic}<button onClick={() => removeTopic(topic)} type="button" aria-label='remove topic'>x</button></li>);
     return (
         <form onSubmit={handleSubmit} >
             <p>Add topics to generate a quiz below</p>
