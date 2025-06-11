@@ -4,6 +4,7 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 25px;
 }
 
 
@@ -37,7 +38,7 @@ li > button {
 li>button:hover {
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
-main > button{
+form > button,main > button{
     padding: 10px;
     background-color: #333446;
     color: #EAEFEF;
@@ -52,6 +53,7 @@ form > ul {
     gap: 20px;
     justify-content: flex-start;
     align-items: center;
+    
 }
 
 li {
