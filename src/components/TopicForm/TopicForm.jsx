@@ -19,7 +19,6 @@ function TopicForm() {
     }
     function removeAllTopics() {
         setTopics([]);
-        console.log(topics)
     }
     function submitQuiz() {
         console.log("Form submitted");
