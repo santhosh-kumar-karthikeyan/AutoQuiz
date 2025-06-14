@@ -2,7 +2,7 @@ import './TopicForm.css';
 import { useState,useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
-import getQuiz from "../../getQuiz.js";
+import getQuiz from "../../../api/getQuiz.js";
 import Quiz from "../Quiz/Quiz";
 
 function TopicForm() {
