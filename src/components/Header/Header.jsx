@@ -1,4 +1,4 @@
-import quizLogo from "/quiz.png";
+import quizLogo from "/autoQuizLogo.png";
 import "./Header.css";
 function Header() {
     return (
