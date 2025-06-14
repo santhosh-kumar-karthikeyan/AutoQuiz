@@ -1,6 +1,4 @@
 import { InferenceClient } from "@huggingface/inference";
-import dotenv from "dotenv";
-dotenv.config();
 
 function extractJSONFromLLMResponse(response) {
     const cleaned = response
@@ -17,7 +15,10 @@ function extractJSONFromLLMResponse(response) {
 }
 
 async function getQuiz(topicList,numQuestions,numMCQs) {
-    const client = new InferenceClient(process.env.HF_TOKEN);
+    console.log(`MODE: ${import.meta.env.MODE}`);
+    const token = import.meta.env.VITE_HF_TOKEN;
+    console.log(`TOKEN: ${token}`);
+    const client = new InferenceClient(token);
     const prompt = `
         You are a quiz-generating assistant. Generate a Multiple Choice quiz in JSON format based on the following parameters:
 
@@ -57,10 +58,7 @@ async function getQuiz(topicList,numQuestions,numMCQs) {
             },
         ],
     });
-    return extractJSONFromLLMResponse(chatCompletion.choices[0].message.content);
+    return extractJSONFromLLMResponse(chatCompletion.choices[0].message.content).quiz;
 }
 
-(async () => {
-    console.log(await getQuiz(["Operating Systems", "Kernel", "Deadlock"],10,2));
-})();
-
+export default getQuiz;

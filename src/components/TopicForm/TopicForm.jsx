@@ -2,11 +2,14 @@ import './TopicForm.css';
 import { useState,useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
+import getQuiz from "../../getQuiz.js";
+import Quiz from "../Quiz/Quiz";
 
 function TopicForm() {
     const [topics, setTopics] = useState([]);
     const topicRef = useRef("");
     const [multiChoice, setMultiChoice] = useState(5);
+    const [quiz,setQuiz] = useState([]);
     function addTopic() {
         const newTopic = topicRef.current.value;
         if(!newTopic || topics.find(topic => topic == newTopic))
@@ -20,8 +23,13 @@ function TopicForm() {
     function removeAllTopics() {
         setTopics([]);
     }
-    function submitQuiz() {
-        console.log("Form submitted");
+    async function submitQuiz(formData) {
+        const numQuestions = formData.get("numQuestions");
+        const multiChoice = formData.get("multiChoice");
+        console.log(numQuestions);
+        console.log(multiChoice);
+        console.log(topics);
+        setQuiz( await getQuiz(topics,numQuestions,multiChoice));
     }
     const topicList = topics.map(topic => <li>{topic}<button onClick={() => removeTopic(topic)} type="button" aria-label='remove topic'>x</button></li>);
     return (
@@ -51,9 +59,12 @@ function TopicForm() {
                     <option value={20}>20</option>
                 </select>
                 <label htmlFor="mutliChoice">Number of multiple choice questions</label>
-                <input id="multiChoice" type="number" defaultValue={5} max={multiChoice} min={0} step={1} />
+                <input name="multiChoice" id="multiChoice" type="number" defaultValue={5} max={multiChoice} min={0} step={1} />
                 <button>Generate Quiz</button>
             </form>}
+            {
+                quiz.length > 0 && <Quiz quiz={quiz}/>
+            }
         </main>
     )
 }
