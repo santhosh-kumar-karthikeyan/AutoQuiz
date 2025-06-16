@@ -2,12 +2,19 @@ import "./Question.css";
 
 function Question(props) {
     const question = props.question;
+    const setAnswers = props.setAnswers;
+    function setAnswer(evt) {
+        const { value } = evt.currentTarget;
+        setAnswers(oldAnswer => (
+            oldAnswer.map((ans, index) => index === question.qId ? value : ans)
+        ));
+    }
     const optionList = question.options.map(option => {
         return (
         <li>
                 {question.type === "mcq" ?
-                    <input type="radio" /> :
-                    <input type="checkbox" />
+                    <input type="radio" name="mcq" onChange={setAnswer} value={option} required/> :
+                    <input type="checkbox" onChange={setAnswer} value={option} required/>
                 } {option} 
         </li>
         )
