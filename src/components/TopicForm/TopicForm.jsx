@@ -29,7 +29,6 @@ function TopicForm() {
     async function handleResponse(formData) {
         const numQuestions = formData.get("numQuestions");
         const multiChoice = formData.get("multiChoice");
-        await setLoading(true);
         try {
             const params = new URLSearchParams({
                 topics: topics.join(","),
@@ -80,8 +79,8 @@ function TopicForm() {
                     <option value={10}>10</option>
                     <option value={20}>20</option>
                 </select>
-                <label htmlFor="mutliChoice">Number of multiple choice questions</label>
-                <input name="multiChoice" id="multiChoice" type="number" defaultValue={5} max={multiChoice} min={0} step={1} />
+                <label htmlFor="mutliChoice">Number of multiple select questions</label>
+                <input name="multiChoice" id="multiChoice" type="number" defaultValue={0} max={multiChoice} min={0} step={1} />
                 <button>Generate Quiz</button>
             </form>}
             {loading && <p>Generating your quiz... 🧠</p>}
