@@ -4,19 +4,46 @@ function Question(props) {
     const question = props.question;
     const setAnswers = props.setAnswers;
     function setAnswer(evt) {
-        const { value } = evt.currentTarget;
-        setAnswers(oldAnswer => (
-            oldAnswer.map((ans, index) => index === question.qId ? value : ans)
-        ));
-    }
-    const optionList = question.options.map(option => {
+        const { value, checked } = evt.currentTarget;
+        const selectedValue = +value;
+
+        setAnswers(oldAnswers =>
+            oldAnswers.map((ans, index) => {
+                if (index !== question.qId) {
+                    console.log(ans);
+                    return ans;
+                }
+
+                if (question.type === "msq") {
+                    // Deselect: remove the value
+                    if (!checked) {
+                        const updated = ans.filter(val => val !== selectedValue);
+                        console.log(updated.length > 0 ? updated : [-1]);
+                        return updated.length > 0 ? updated : [-1]; // or [] if you prefer
+                    }
+
+                    // Select: add if not already present
+                    if (ans.includes(selectedValue)) {
+                        console.log(ans);
+                        return ans;
+                    }
+                    console.log(ans[0] === -1 ? [selectedValue] : [...ans, selectedValue]);
+                    return ans[0] === -1 ? [selectedValue] : [...ans, selectedValue];
+                }
+
+                // For MCQ: single value selected
+                return [selectedValue];
+            })
+        );
+      }
+    const optionList = question.options.map((option, idx) => {
         return (
-        <li>
+            <li key={idx}>
                 {question.type === "mcq" ?
-                    <input type="radio" name="mcq" onChange={setAnswer} value={option} required/> :
-                    <input type="checkbox" onChange={setAnswer} value={option} required/>
-                } {option} 
-        </li>
+                    <input type="radio" name={`mcq${question.qId}`} onChange={setAnswer} value={idx} /> :
+                    <input type="checkbox" onChange={setAnswer} value={idx} />
+                } {option}
+            </li>
         )
     });
     return (

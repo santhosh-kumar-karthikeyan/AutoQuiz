@@ -57,7 +57,7 @@ function TopicForm() {
         setQuiz(sampleQuiz.quiz);
     }
 
-    const topicList = topics.map(topic => <li>{topic}<button onClick={() => removeTopic(topic)} type="button" aria-label='remove topic'>x</button></li>);
+    const topicList = topics.map((topic, idx) => <li key={idx}>{topic}<button onClick={() => removeTopic(topic)} type="button" aria-label='remove topic'>x</button></li>);
     return (
         <main id="whole-main">
             <form action={addTopic} id="topicForm">
