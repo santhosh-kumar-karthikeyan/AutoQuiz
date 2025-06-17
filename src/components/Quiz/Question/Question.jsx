@@ -10,7 +10,6 @@ function Question(props) {
         setAnswers(oldAnswers =>
             oldAnswers.map((ans, index) => {
                 if (index !== question.qId) {
-                    console.log(ans);
                     return ans;
                 }
 
@@ -32,10 +31,11 @@ function Question(props) {
                 }
 
                 // For MCQ: single value selected
+                console.log([selectedValue])
                 return [selectedValue];
             })
         );
-      }
+    }
     const optionList = question.options.map((option, idx) => {
         return (
             <li key={idx}>
@@ -48,7 +48,7 @@ function Question(props) {
     });
     return (
         <main>
-            <small>{question.qId + 1}</small> <p>{question.question}</p>
+            <small>{question.qId + 1}</small> <p>{question.question}</p><p>{props.totalScore > 0 && ( props.score > 0 ? props.score : 0)}</p>
             <ul>
                 {optionList}
             </ul>

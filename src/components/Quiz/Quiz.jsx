@@ -5,33 +5,47 @@ import { useState } from "react";
 function Quiz(props) {
     const quiz = props.quiz;
     const [answers, setAnswers] = useState(Array(quiz.length).fill(null).map(() => [-1]));
-    const questions = quiz.map(question => <li key={question.qId}><Question question={question} setAnswers={setAnswers} /></li>);
+    const [score, setScore] = useState(Array(quiz.length).fill(-1));
+    const [totalScore, setTotalScore] = useState(-1);
     const scorePerQuestion = 100 / quiz.length;
-    const [score, setScore] = useState(-1);
+
+    const questions = quiz.map(question => <li key={question.qId}><Question question={question} setAnswers={setAnswers} score={score[question.qId]} totalScore={totalScore} /></li>);
     function validateAnswers() {
-        let totalScore = 0;
+        setTotalScore(0);
+        let sum = 0;
         for (const question of quiz) {
-            console.log(quiz);
-            console.log(answers);
+            let currScore = 0;
+            if (question.type === "mcq" && JSON.stringify(question.answerIndex) === JSON.stringify(answers[question.qId])) {
+                currScore = scorePerQuestion;
+            }
+            if (question.type === "msq") {
+                const actualAnswers = question.answerIndex.sort();
+                const userAnswers = answers[question.qId].sort();
+                const scorePerOption = scorePerQuestion / actualAnswers.length;
+                for (const ans of actualAnswers) {
+                    if (userAnswers.includes(ans))
+                        currScore += scorePerOption;
+                }
+            }
             console.log(`
                 Type of question is: ${question.type}.
                 User answered: ${answers[question.qId]}.
                 Actual answers: ${question.answerIndex}
+                Score is: ${currScore}
                 `);
-            // if (question.type === "mcq" && question.answerIndex === answers[question.qId])
-            //     totalScore += scorePerQuestion;
-            // if (question.type === "msq" && question.answerIndex.sort() === answers[question.qId].sort())
-            //     totalScore += scorePerQuestion;
+            
+            setScore(oldScore => oldScore.map((ele, idx) => idx === question.qId ? currScore : ele));
+            sum += currScore;
         }
-        setScore(totalScore);
+        setTotalScore(sum);
     }
     return (
         <form action={validateAnswers}>
             {questions}
             {
-                score < 0 ?
+                totalScore < 0 ?
                     <button>Submit Answers</button> :
-                    <h4>Your score is: {score}</h4>
+                    <h4>Your score is: {totalScore}</h4>
             }
         </form >)
 }
