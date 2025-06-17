@@ -1,0 +1,141 @@
+{
+    "quiz": [
+        {
+            "qId": 0,
+            "question": "Who is Perpetuator?",
+            "type": "mcq",
+            "options": [
+                "A music producer",
+                "A fictional superhero",
+                "A type of software",
+                "A historical figure"
+            ],
+            "answerIndex": [0]
+        },
+        {
+            "qId": 1,
+            "question": "Which of the following are aliases used by MF DOOM?",
+            "type": "msq",
+            "options": [
+                "Viktor Vaughn",
+                "King Geedorah",
+                "Zev Love X",
+                "Metal Fingers"
+            ],
+            "answerIndex": [
+                0,
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "qId": 2,
+            "question": "Mr. Fantastic is a member of which superhero team?",
+            "type": "mcq",
+            "options": [
+                "The Avengers",
+                "The X-Men",
+                "The Fantastic Four",
+                "The Justice League"
+            ],
+            "answerIndex": [2]
+        },
+        {
+            "qId": 3,
+            "question": "Which albums are collaborations between MF DOOM and other artists?",
+            "type": "msq",
+            "options": [
+                "Madvillainy",
+                "Operation: Doomsday",
+                "Born Like This",
+                "NehruvianDoom"
+            ],
+            "answerIndex": [
+                0,
+                3
+            ]
+        },
+        {
+            "qId": 4,
+            "question": "What is Perpetuator known for producing?",
+            "type": "mcq",
+            "options": [
+                "Rock music",
+                "Hip-hop beats",
+                "Classical symphonies",
+                "Electronic dance music"
+            ],
+            "answerIndex": [1]
+        },
+        {
+            "qId": 5,
+            "question": "Which powers does Mr. Fantastic possess?",
+            "type": "msq",
+            "options": [
+                "Super strength",
+                "Elasticity",
+                "Invisibility",
+                "Flight"
+            ],
+            "answerIndex": [
+                1
+            ]
+        },
+        {
+            "qId": 6,
+            "question": "MF DOOM's mask is inspired by which fictional character?",
+            "type": "mcq",
+            "options": [
+                "Doctor Doom",
+                "Darth Vader",
+                "The Joker",
+                "Magneto"
+            ],
+            "answerIndex": [0]
+        },
+        {
+            "qId": 7,
+            "question": "Which of these tracks feature Perpetuator?",
+            "type": "msq",
+            "options": [
+                "Eternal Beats",
+                "Hip-Hop Symphony",
+                "Rap Chronicles",
+                "Infinite Loops"
+            ],
+            "answerIndex": [
+                0,
+                3
+            ]
+        },
+        {
+            "qId": 8,
+            "question": "What is Mr. Fantastic's real name?",
+            "type": "mcq",
+            "options": [
+                "Tony Stark",
+                "Reed Richards",
+                "Bruce Banner",
+                "Peter Parker"
+            ],
+            "answerIndex": [1]
+        },
+        {
+            "qId": 9,
+            "question": "Which of the following are true about MF DOOM's career?",
+            "type": "msq",
+            "options": [
+                "He often performed in disguise",
+                "He was born in the UK",
+                "He collaborated with Gorillaz",
+                "He won a Grammy for Best Rap Album"
+            ],
+            "answerIndex": [
+                0,
+                1,
+                2
+            ]
+        }
+    ]
+}

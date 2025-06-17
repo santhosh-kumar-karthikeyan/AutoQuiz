@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     - Total Number of Questions: ${numQuestions} of which,
     - Total Number of Multiple Select Questions are: ${numMCQs}
     - Language: English
-    Your output must strictly follow this JSON structure:
+    Your output must strictly follow this JSON structure, the answerIndex should always be in an array:
     {
       "quiz": [
         {
@@ -43,7 +43,7 @@ export default async function handler(req, res) {
           "question": "...",
           "type": "mcq",
           "options": ["...", "...", "...", "..."],
-          "answerIndex": 0
+          "answerIndex": [0]
         },
         {
           "qId": 1,
