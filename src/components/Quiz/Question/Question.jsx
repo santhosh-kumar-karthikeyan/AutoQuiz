@@ -33,15 +33,17 @@ function Question(props) {
         return (
             <li key={idx} className={getOptionStyle(idx)}>
                 {question.type === "mcq" ?
-                    <input type="radio" name={`mcq${question.qId}`} onChange={(evt) => setAnswer(evt, idx)} value={idx} checked={ choices[idx]} disabled={props.totalScore >= 0} /> :
-                    <input type="checkbox" onChange={(evt) => setAnswer(evt, idx)} value={idx} checked={choices[idx] } disabled={props.totalScore >= 0} />
+                    <input type="radio" name={`mcq${question.qId}`} onChange={(evt) => setAnswer(evt, idx)} value={idx} checked={choices[idx]} disabled={props.totalScore >= 0} /> :
+                    <input type="checkbox" onChange={(evt) => setAnswer(evt, idx)} value={idx} checked={choices[idx]} disabled={props.totalScore >= 0} />
                 } {option}
             </li>
         )
     });
     return (
         <main>
-            <small>{question.qId + 1}</small> <p>{question.question}</p><p>{props.totalScore >= 0 && (props.score > 0 ? props.score : 0)}</p>
+            <section>
+                <p>{question.qId + 1}</p> <p>{question.question}</p><p>{props.totalScore >= 0 && (props.score > 0 ? props.score : 0)}</p>
+            </section>
             <ul>
                 {optionList}
             </ul>

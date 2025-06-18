@@ -9,3 +9,27 @@
 .missed-correct {
     background-color: yellow;
 }
+
+li {
+    list-style: none;
+}
+
+main > section {
+    display: flex;
+    gap: 20px;
+}
+
+/* section > p {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+} */
+
+main > ul {
+    margin: 15px 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

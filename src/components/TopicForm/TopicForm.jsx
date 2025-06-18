@@ -1,5 +1,4 @@
 import './TopicForm.css';
-import sampleQuiz from '../../../samplequiz.json'
 import { useState,useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
@@ -17,7 +16,6 @@ function TopicForm() {
             return;
         console.log(topics);
         setTopics(prevTopics => [...prevTopics,newTopic]);
-        // setLoading(true);
     }
     function removeTopic(topic) {
         setTopics(topics.filter(currTopic => currTopic !== topic));
@@ -27,34 +25,30 @@ function TopicForm() {
         setQuiz([]);
         setLoading(false);
     }
-    // async function handleResponse(formData) {
-    //     const numQuestions = formData.get("numQuestions");
-    //     const multiChoice = formData.get("multiChoice");
-    //     try {
-    //         const params = new URLSearchParams({
-    //             topics: topics.join(","),
-    //             numQuestions,
-    //             numMCQs: multiChoice,
-    //         });
-    //         const res = await fetch(`api/getQuiz?${params}`);
-    //         const data = await res.json();
-    //         if(!data) {
-    //             console.log("Data not found");
-    //         }
-    //         else 
-    //             console.log(JSON.stringify(data));
-    //         setQuiz(data.quiz);
-    //     } catch (err) {
-    //         console.error("Quiz generation failed", err);
-    //     }
-    // }
-    // function submitQuiz(formData) {
-    //     setLoading(true);
-    //     handleResponse(formData).then(() => setLoading(false));
-    // }
-    function submitQuiz() {
-        console.log(sampleQuiz);
-        setQuiz(sampleQuiz.quiz);
+    async function handleResponse(formData) {
+        const numQuestions = formData.get("numQuestions");
+        const multiChoice = formData.get("multiChoice");
+        try {
+            const params = new URLSearchParams({
+                topics: topics.join(","),
+                numQuestions,
+                numMCQs: multiChoice,
+            });
+            const res = await fetch(`api/getQuiz?${params}`);
+            const data = await res.json();
+            if(!data) {
+                console.log("Data not found");
+            }
+            else 
+                console.log(JSON.stringify(data));
+            setQuiz(data.quiz);
+        } catch (err) {
+            console.error("Quiz generation failed", err);
+        }
+    }
+    function submitQuiz(formData) {
+        setLoading(true);
+        handleResponse(formData).then(() => setLoading(false));
     }
 
     const topicList = topics.map((topic, idx) => <li key={idx}>{topic}<button onClick={() => removeTopic(topic)} type="button" aria-label='remove topic'>x</button></li>);
@@ -78,7 +72,7 @@ function TopicForm() {
             {topics.length > 0 &&
             <form action={submitQuiz} id="questionForm">
                 <label>Total number of questions</label>
-                <select name="numQuestions" defaultValue="" onChange={(e) => {setMultiChoice(e.target.value)}}>
+                    <select name="numQuestions" defaultValue={5} onChange={(e) => {setMultiChoice(e.target.value)}}>
                     <option value="" disabled>--Select the # of questions--</option>
                     <option value={5}>5</option>
                     <option value={10}>10</option>
@@ -90,7 +84,7 @@ function TopicForm() {
             </form>}
             {loading && <p>Generating your quiz... 🧠</p>}
             {
-                quiz.length > 0 && <Quiz quiz={quiz}/>
+                quiz.length > 0 && <Quiz topics={topics} quiz={quiz}/>
             }
         </main>
     )

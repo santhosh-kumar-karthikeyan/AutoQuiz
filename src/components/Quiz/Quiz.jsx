@@ -41,7 +41,10 @@ function Quiz(props) {
     }
     return (
         <form action={validateAnswers}>
-            {questions}
+            <h4>Quiz on topic{props.topics.length > 1 && 's'}: <strong>{props.topics.join(", ")}</strong></h4>
+            <ol>
+                {questions}
+            </ol>
             {
                 totalScore < 0 ?
                     <button>Submit Answers</button> :
