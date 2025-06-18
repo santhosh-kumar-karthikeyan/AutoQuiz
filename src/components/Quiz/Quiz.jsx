@@ -9,7 +9,7 @@ function Quiz(props) {
     const [totalScore, setTotalScore] = useState(-1);
     const scorePerQuestion = 100 / quiz.length;
 
-    const questions = quiz.map(question => <li key={question.qId}><Question question={question} setAnswers={setAnswers} score={score[question.qId]} totalScore={totalScore} /></li>);
+    const questions = quiz.map(question => <li key={question.qId}><Question question={question} setAnswers={setAnswers} score={score[question.qId]} totalScore={totalScore} correctAnswers={question.answerIndex} /></li>);
     function validateAnswers() {
         setTotalScore(0);
         let sum = 0;
@@ -33,7 +33,7 @@ function Quiz(props) {
                 Actual answers: ${question.answerIndex}
                 Score is: ${currScore}
                 `);
-            
+
             setScore(oldScore => oldScore.map((ele, idx) => idx === question.qId ? currScore : ele));
             sum += currScore;
         }
@@ -41,7 +41,10 @@ function Quiz(props) {
     }
     return (
         <form action={validateAnswers}>
-            {questions}
+            <h4>Quiz on topic{props.topics.length > 1 && 's'}: <strong>{props.topics.join(", ")}</strong></h4>
+            <ol>
+                {questions}
+            </ol>
             {
                 totalScore < 0 ?
                     <button>Submit Answers</button> :

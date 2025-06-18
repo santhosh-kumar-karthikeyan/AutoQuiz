@@ -4,15 +4,43 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    font-family: "Zilla Slab", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: 400;
-    font-size: 1.5rem;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-family: "Zilla Slab", "Arial Narrow", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-header > img {
-    width: 70px;
+header>img {
+    width: 80px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+header>img:hover {
+    transform: scale(1.1);
+}
+
+header>h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 5vw, 2.25rem);
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        font-size: 1.5rem;
+    }
+
+    header>img {
+        width: 60px;
+    }
 }
