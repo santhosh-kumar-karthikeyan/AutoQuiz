@@ -1,0 +1,11 @@
+.correct-option {
+    background-color: green;
+}
+
+.wrong-option {
+    background-color: red;
+}   
+
+.missed-correct {
+    background-color: yellow;
+}
