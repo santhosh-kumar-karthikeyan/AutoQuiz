@@ -13,7 +13,6 @@ function TopicForm() {
   function addTopic() {
     const newTopic = topicRef.current.value;
     if (!newTopic || topics.find((topic) => topic == newTopic)) return;
-    console.log(topics);
     setTopics((prevTopics) => [...prevTopics, newTopic]);
   }
   function removeTopic(topic) {
@@ -37,7 +36,7 @@ function TopicForm() {
       const data = await res.json();
       if (!data) {
         console.log("Data not found");
-      } else console.log(JSON.stringify(data));
+      }
       setQuiz(data.quiz);
     } catch (err) {
       console.error("Quiz generation failed", err);
