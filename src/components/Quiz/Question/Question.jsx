@@ -42,7 +42,7 @@ function Question(props) {
     return (
         <main>
             <section>
-                <p>{question.qId + 1}</p> <p>{question.question}</p><p>{props.totalScore >= 0 && (props.score > 0 ? props.score : 0)}</p>
+                <p>{question.qId + 1}</p> <p>{question.question}</p><p>{props.totalScore >= 0 && (props.score > 0 ? Math.round(props.score * 100) / 100 : 0)}</p>
             </section>
             <ul>
                 {optionList}

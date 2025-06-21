@@ -70,3 +70,85 @@ form>h4 {
         font-size: 0.875rem;
     }
 }
+
+form {
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 700px;
+    margin: 1.5rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+div.close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ef4444;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+div.close:hover {
+    transform: scale(1.1);
+}
+
+.legend {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 2rem;
+    background-color: #f9fafb;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    font-family: Inter, Arial, sans-serif;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.legend legend {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333446;
+    margin-bottom: 0.5rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.legend-item.correct-option .legend-color {
+    background-color: #10b981;
+}
+
+.legend-item.wrong-option .legend-color {
+    background-color: #ef4444;
+}
+
+.legend-item.missed-correct .legend-color {
+    background-color: #facc15;
+}
+
+.legend-color {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px #d1d5db;
+}
