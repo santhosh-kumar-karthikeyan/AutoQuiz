@@ -1,4 +1,3 @@
-// File: api/getQuiz.js
 import { InferenceClient } from "@huggingface/inference";
 
 function extractJSONFromLLMResponse(response) {
@@ -12,7 +11,7 @@ function extractJSONFromLLMResponse(response) {
 }
 
 export default async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Allow any origin
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -22,7 +21,7 @@ export default async function handler(req, res) {
     }
     const { topics = "", numQuestions = 10, numMCQs = 3 } = req.query;
 
-    const HF_TOKEN = process.env.VITE_HF_TOKEN; // backend env var (NOT prefixed with VITE_)
+    const HF_TOKEN = process.env.VITE_HF_TOKEN; 
     if (!HF_TOKEN) {
         return res.status(500).json({ error: "Missing HuggingFace token" });
     }
